@@ -1,0 +1,10 @@
+node_modules
+_site
+cert
+coverage
+README.md
+package.json
+package-*
+dist/
+.vscode/
+.github/
