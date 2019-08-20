@@ -6,16 +6,14 @@ export const isDev = process.env.NODE_ENV === 'development';
 
 export const port = process.env.APP_PORT || 4000;
 
-export const logLevel = 'info'; // info error
+export const logLevel = 'info'; // info or error
 
-// 短信服务商配置
-export const smsConfig = {
-  // 云片网
-  yunpan: {
-    url: process.env.YUNPAN_URL,
-    apiKey: process.env.YUNPAN_API_KEY,
-  },
-};
+export const jwtSecret = process.env.JWT_SECRET || 'maodou-jwt';
+
+// MongoDB地址
+export const mongoUrl = isDev
+  ? process.env.MONGO_URL_DEV
+  : process.env.MONGO_URL;
 
 // redis配置
 export const redisConfig = {
@@ -32,6 +30,15 @@ export const sessionConfig = {
   saveUninitialized: false,
   resave: false,
   cookie: { maxAge: 15 * 60 * 1000 },
+};
+
+// 短信服务商配置
+export const smsConfig = {
+  // 云片网
+  yunpan: {
+    url: process.env.YUNPAN_URL,
+    apiKey: process.env.YUNPAN_API_KEY,
+  },
 };
 
 export const rateLimitConfig = {

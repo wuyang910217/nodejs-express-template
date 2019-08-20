@@ -27,13 +27,15 @@
     "core-js": "^2.6.9",
     "cors": "^2.8.5",
     "debug": "^3.2.6",
+    "dotenv": "^8.0.0",
     "express": "^4.17.1",
     "express-rate-limit": "^5.0.0",
     "express-session": "^1.16.1",
     "helmet": "^3.18.0",
-    "dotenv": "^8.0.0",
+    "jsonwebtoken": "^8.5.1",
     "maodou-logger-util": "^1.0.3",
-    "maodou-redis-util": "^1.0.2"
+    "maodou-redis-util": "^1.0.2",
+    "mongoose": "^5.6.9"
   },
   "peerDependencies": {
     "debug": "^3.2.6",

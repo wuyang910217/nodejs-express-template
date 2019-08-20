@@ -19,10 +19,13 @@ import RouterInit from './router/';
 // 初始化logger
 Logger.initLogger(logLevel);
 
+// 连接mongo
+import './mongodb/';
 // 连接redis 需要提供一个名字
 Redis.newConnect(redisConfig.name, redisConfig);
 
 const app = express();
+// 这里是全局频率限制 更好的做法是在每个路由处设置频率限制的中间件
 const limiter = rateLimit(rateLimitConfig);
 
 app.enable('trust proxy');

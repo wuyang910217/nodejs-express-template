@@ -10,4 +10,7 @@ export default {
   serverInternalError: 500,
   serviceUnavailable: 503,
   serviceTimeout: 504,
+
+  // 其他自定义错误
+  USER_NOT_EXIST: 10001,
 };
