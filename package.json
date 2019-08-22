@@ -10,7 +10,6 @@
     "dev": "cross-env DEBUG=maodou* NODE_ENV=development webpack --config webpack.config.js --progress --watch",
     "build": "rimraf ./dist && cross-env NODE_ENV=production webpack --config webpack.config.js --progress",
     "start": "node dist/index.js",
-    "patch": "npm version patch",
     "release": "np --no-cleanup --yolo --no-publish",
     "commit": "git-cz"
   },
