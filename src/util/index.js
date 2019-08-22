@@ -1,5 +1,7 @@
 import jwt from 'jsonwebtoken';
+import bcrypt from 'bcrypt';
 import { jwtSecret } from '../config/index';
+
 /**
  * 生成jwt token
  * @export
@@ -23,4 +25,17 @@ export function genToken(info, expires = '60d') {
 export function verifyToken(token) {
   if (!token) throw new Error('缺少必要参数');
   return jwt.verify(token.replace('Bearer ', ''), jwtSecret);
+}
+
+// hash原始密码
+export async function genPwd(rawPwd, saltRounds = 10) {
+  if (!rawPwd) throw new Error('缺少必要参数');
+  const hashPwd = await bcrypt.hash(password, saltRounds);
+  return hashPwd;
+}
+
+// 对比密码
+export async function comparePwd(userPwd, rawPwd) {
+  const match = await bcrypt.compare(rawPwd, userPwd);
+  return match;
 }
