@@ -20,7 +20,7 @@ import RouterInit from './router/';
 Logger.initLogger(logLevel);
 
 // 连接mongo
-import './mongodb/';
+import './db/';
 // 连接redis 需要提供一个名字
 Redis.newConnect(redisConfig.name, redisConfig);
 
