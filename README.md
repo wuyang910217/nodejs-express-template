@@ -21,6 +21,10 @@ npm run start
 
 运行后可以访问http://localhost:4000/api/v1/test?name=express-template
 
+## 项目结构
+
+![image](https://user-images.githubusercontent.com/2918044/63660487-4165aa80-c7e9-11e9-994c-568b8936f2a6.png)
+
 ## 依赖
 
 项目依赖以下库，可以在你的程序里直接使用，不用再次安装
