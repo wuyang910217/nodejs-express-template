@@ -8,6 +8,17 @@ export const defaultCollectionConfig = {
   // 或者设置不同的字段 timestamps: {createdAt: 'created_at', updatedAt: 'updated_at'}
 };
 
+//Schema类型
+// String
+// Boolean
+// Date
+// Number
+// Mixed
+// ObjectId
+// Array
+// Decimal128
+// Buffer
+
 // 查询条件
 // find({})
 // .limit(10)

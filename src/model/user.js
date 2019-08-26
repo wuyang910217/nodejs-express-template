@@ -11,18 +11,39 @@ const UserSchema = new Schema(
     },
     token: { type: String, required: true }, // 用户token 用于用户验证
     // 个人信息
-    username: String,
+    // unique表示设置一个全局唯一的索引 而不是字段值不重复的意思
+    // 相对应的sparse: true 表示设置一个稀疏索引
+    username: { type: String, unique: true },
     avatar_url: String,
+    profile: Schema.Types.Mixed, //object
+    decimal: Schema.Types.Decimal128,
+    names: [String], // 数组
+    deleted: { type: Boolean, default: false },
     count: { type: Number, required: true, min: 2, max: 10 },
-    courseId: { type: String, ref: 'courses' }, // Population联表
+    courseId: { type: String, ref: 'Course' }, // Population联表
     phone: { type: String, unique: true, minlength: 6, maxlength: 25 }, //手机号 唯一
     status: { type: String, enum: ['active', 'pending', 'deleted'] }, // 用户账号状态
+    joined_at: { type: Date, default: Date.now }, // Date.now而不是Date.now()
   },
   defaultCollectionConfig,
 );
 
+// 必须放在创建model之前
+UserSchema.methods.hello = function() {
+  return 'hello ' + this.username;
+};
+
+UserSchema.statics.findByName = function(name) {
+  return this.find({ name: new RegExp(name, 'i') });
+};
+
+// 与下面定义的函数一样
+UserSchema.statics.findUserByName = async function(name, fields = {}) {
+  return await this.findOne({ name }).select(fields);
+};
+
 // 最后一个参数表示自定义的此集合的名字
-const UserModel = mongoose.model('users', UserSchema, 'users');
+const UserModel = mongoose.model('User', UserSchema, 'users');
 
 export async function findUserById(id, fields = {}) {
   return await UserModel.findById(id).select(fields);
