@@ -1,0 +1,9 @@
+// 此目录下的接口 以admin为前缀
+import express from 'express';
+import user from './user';
+
+const router = express.Router();
+
+router.use('/user', user);
+
+export default router;
