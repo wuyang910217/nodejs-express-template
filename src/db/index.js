@@ -7,8 +7,11 @@ const LoggerInfo = Logger.LoggerInfo;
 
 // 连接MongoDB, 在生产环境应该禁用autoIndex，因为会造成性能问题
 mongoose.connect(mongoUrl, {
-  config: { autoIndex: false },
+  autoIndex: false,
+  // poolSize: 5, // 连接池 默认就是5
   useNewUrlParser: true,
+  reconnectTries: 5, // 重连次数
+  reconnectInterval: 500, // 重连间隔
 });
 
 // MongoDB连接成功后回调，这里仅输出一行日志
