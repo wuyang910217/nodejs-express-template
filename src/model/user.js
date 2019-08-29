@@ -7,13 +7,19 @@ const UserSchema = new Schema(
   {
     _id: {
       type: String,
-      default: () => new mongoose.Types.ObjectId(),
+      default: mongoose.Types.ObjectId,
     },
     token: { type: String, required: true }, // 用户token 用于用户验证
     // 个人信息
     // unique表示设置一个全局唯一的索引 而不是字段值不重复的意思
     // 相对应的sparse: true 表示设置一个稀疏索引
-    username: { type: String, unique: true },
+    username: {
+      type: String,
+      unique: true,
+      required: true,
+      maxlength: 20,
+      minlength: 2,
+    },
     avatar_url: String,
     profile: Schema.Types.Mixed, //object
     decimal: Schema.Types.Decimal128,
