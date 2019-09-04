@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 import { defaultCollectionConfig } from './util';
+import { genPwd } from '../util/index';
 
 const Schema = mongoose.Schema;
 
@@ -67,4 +68,21 @@ export async function createUser(data) {
   const item = new UserModel(data);
   await item.save();
 }
+
+// 创建第一个管理用户
+export async function createOwnerUser() {
+  const count = await UserModel.find({}).count();
+  if (count < 1) {
+    const pwd = await genPwd('izEhQDy4jVxt6blO');
+    const user = new UserModel({
+      phone: '18612341234',
+      role: 'owner',
+      username: '毛豆管理员',
+      password: pwd,
+    });
+    await user.save();
+    console.log('初始化管理员账号成功...');
+  }
+}
+
 // export default UserModel;
