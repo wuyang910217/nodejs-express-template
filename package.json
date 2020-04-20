@@ -1,6 +1,6 @@
 {
   "name": "express-template",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "nodejs express开发模板",
   "main": "./dist/index.js",
   "engines": {
