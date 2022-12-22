@@ -36,7 +36,7 @@
     "express-rate-limit": "^5.0.0",
     "express-session": "^1.16.1",
     "helmet": "^3.18.0",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "lodash": "^4.17.15",
     "maodou-logger-util": "^1.0.3",
     "maodou-redis-util": "^1.0.2",
